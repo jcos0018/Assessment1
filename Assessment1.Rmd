@@ -32,8 +32,15 @@ The dataset used for this assignment is age and population data for selected cou
 
 The dataset used in this assigment includes 5 variables: Country name; Year; Population size; Population growth rate; and median age. 
 
+
+
 ```{r variable names, include=TRUE}
-Population_data<-read_excel("Data/Population data.xlsx")
+Population_data<-read_excel("Data/Population data.xlsx")|>
+rename(Country = `Region, subregion, country or area`,  #renaming some variables here for simplicity
+       Population_thousands = `Total Population, as of 1 July (thousands)`,
+       Median_age = `Median Age, as of 1 July (years)`,
+       Population_growth_rate_percent = `Population Growth Rate (percentage)`
+       )
 knitr::kable(
   data.frame(
     Variable = names(Population_data),
@@ -51,9 +58,20 @@ knitr::include_graphics("Image/Number of variables and observations.png")
 str(Population_data,vec.len = 2)
 ```
 
+**Section 5: Data summary**
 
-
-
+```{r Summary, echo=TRUE}
+Population_data_summary <- Population_data |>
+group_by(Country)|>
+  summarise(
+    Ave_Median_age = mean(Median_age), 
+    Ave_Population_growth_rate_percent = mean(Population_growth_rate_percent)
+    )|>
+  arrange(Ave_Median_age)
+knitr::kable(head(Population_data_summary,10),
+  caption = "Summary by age and growth rate") 
+```
+The summary above shows that of the reported countries, from 1950 to 2023, **Pakistan** has the lowest average median age, and the highest average growth rate, while **Australia** has a relatively high median age and low growth rate. There appears to be a general trend of average median age incraeseing as average population growth rate decreases (inverse relationship).
 
 ## Including Plots
 
