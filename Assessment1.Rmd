@@ -22,11 +22,11 @@ library(zoo)
 library(forecast)
 ```
 
-#Research question
+**Section 2: Research question**
 
 What is the trend in Australia population growth and median age over time? What is the relationship between median age and population growth across various countries?
 
-#Data set introduction
+**Section 3: Data set introduction**
 
 The dataset used for this assignment is age and population data for selected countries, from 1965 to 2023. This dataset is a subset of a larger dataset (containing all countries, and more population and migration variables), available here <https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/EXCEL_FILES/1_General/WPP2024_GEN_F01_DEMOGRAPHIC_INDICATORS_COMPACT.xlsx>.
 
@@ -40,20 +40,20 @@ knitr::kable(
     check.names=FALSE
     ),
   caption = "Variables in the Population_data dataset")
-  
+```
+
+**Section 4: Data set description**
+
+There are `r nrow(Population_data)` observations and `r ncol(Population_data)` variables in the Population dataset.
+
+```{r Number of variables and observations (inline r code), echo=TRUE}
+knitr::include_graphics("Image/Number of variables and observations.png")
+str(Population_data,vec.len = 2)
 ```
 
 
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
 
 ## Including Plots
 
