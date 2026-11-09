@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r libraries, include=FALSE}
+library(knitr)
 library(lubridate)
 library(tidyverse)
 library(sf)
@@ -73,14 +74,25 @@ knitr::kable(head(Population_data_summary,10),
 ```
 The summary above shows that of the reported countries, from 1950 to 2023, **Pakistan** has the lowest average median age, and the highest average growth rate, while **Australia** has a relatively high median age and low growth rate. There appears to be a general trend of average median age incraeseing as average population growth rate decreases (inverse relationship).
 
-## Including Plots
+**Section 6: Visualisations**
 
-You can also embed plots, for example:
+```{r Visualisation, echo=TRUE, fig.cap="This chart shows the relationship (in 2023) between median age of a country, and its population growth, with size of dots indicating the population size of the country."}
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+Population_data |>
+  filter(Year==2023)|>
+  ggplot(aes(x = Population_growth_rate_percent, y = Median_age, size=Population_thousands)) +
+  geom_point()+
+  scale_size_continuous(breaks=seq(100000,700000,by = 200000),labels = scales::comma)+
+  geom_text_repel(
+    aes(label = Country),
+    size = 3,
+    point.padding = 0.9,               
+    segment.color = "grey50" )+
+  labs(title = "Relationship between age and population growth, 2023",
+       x = "Population growth rate (%)",
+       y= "Median age",
+       size = "Population (thousands)")
 ```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
+* *There is a negative relationship between median age and population growth rate of the selected countries.*
+* *There appears to be no strong correlation between population size (represemted by the size of the dots) and either median age or population growth rate, based on this data.*
 
