@@ -94,6 +94,11 @@ Population_data |>
        size = "Population (thousands)")
 ```
 * *There is a negative relationship between median age and population growth rate of the selected countries.*
-* *There appears to be no strong correlation between population size (represemted by the size of the dots) and either median age or population growth rate, based on this data.*
+* *There appears to be no strong correlation between population size (represented by the size of the dots) and either median age or population growth rate, based on this data.*
+
+**Section 7 Conclusion**
+There is a strong negative relationship between the median age of a country, and its annual population growth. That is, on average, the higher the median age of a country, the lower its annual population growth is likely to be. 
+
+This conclusion is based on analysis of 2023 data from 13 countries: the ten largest in the Asia-Pacific region, plus Australia, United Kingdom, and United States of America. To strengthen this conclusion, further analysis could be conducted on a wider array of countries from various continents; and from a variety of different years.
 
 
