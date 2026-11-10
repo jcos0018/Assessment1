@@ -96,3 +96,4 @@ Population_data |>
 * *There is a negative relationship between median age and population growth rate of the selected countries.*
 * *There appears to be no strong correlation between population size (represemted by the size of the dots) and either median age or population growth rate, based on this data.*
 
+
