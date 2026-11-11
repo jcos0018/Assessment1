@@ -141,6 +141,21 @@ geom_text_repel(
 ```
 * *Since around 1970, Australia's median age has gradually increased. Meanwhile, Australia's annual population growth rate has declined from 1950 to 2023.*
 
+```{r Summary2, echo=TRUE}
+Population_data_summary2 <- Population_data |>
+  filter(Year %in% c(1950, 2023))|>
+  pivot_wider(
+    names_from = Year,
+    values_from = c(Population_thousands, Median_age, Population_growth_rate_percent)
+  )|>
+  mutate(Median_age_diff = Median_age_2023 - Median_age_1950,
+         Pop_growth_diff = Population_growth_rate_percent_2023 - Population_growth_rate_percent_1950)|>
+  select(Country, Median_age_diff, Pop_growth_diff)|>
+  arrange(Median_age_diff)
+knitr::kable(head(Population_data_summary2,13),
+  caption = "Changes in median age and population growth rates from 1950 to 2023") 
+```
+* *This table shows that trend we see for Australia (declining growth rate, increasing median age) has occured across all the selected countries to various degrees. Australia ranks towards the middle of the 13 countries selected for this analysis. Japan stands out as an outlier with a very large increase of 27.6 years in median age, and a reduction of 2.2 percentage points in annual population growth rate.*
 
 **Section 7 Conclusion**
 There is a strong negative relationship between the median age of a country, and its annual population growth. That is, on average, the higher the median age of a country, the lower its annual population growth is likely to be. 
