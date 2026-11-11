@@ -11,16 +11,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r libraries, include=FALSE}
 library(knitr)
-library(lubridate)
 library(tidyverse)
-library(sf)
-library(reshape2)
 library(ggrepel)
-library(viridis)
 library(readxl)
-library(scales)
-library(zoo)
-library(forecast)
 ```
 
 **Section 2: Research question**
@@ -74,7 +67,7 @@ group_by(Country)|>
 knitr::kable(head(Population_data_summary,10),
   caption = "Summary by age and growth rate") 
 ```
-The summary above shows that of the reported countries, from 1950 to 2023, **Pakistan** has the lowest average median age, and the highest average growth rate, while **Australia** has a relatively high median age and low growth rate. There appears to be a general trend of average median age incraeseing as average population growth rate decreases (inverse relationship).
+The summary above shows that of the reported countries, from 1950 to 2023, **Pakistan** has the lowest average median age, and the highest average growth rate, while **Australia** has a relatively high median age and low growth rate. There appears to be a general trend of average median age increasing as average population growth rate decreases (negative relationship).
 
 **Section 6: Visualisations**
 
@@ -95,6 +88,6 @@ Population_data |>
        y= "Median age",
        size = "Population (thousands)")
 ```
-* *There is a negative relationship between median age and population growth rate of the selected countries.*
-* *There appears to be no strong correlation between population size (represemted by the size of the dots) and either median age or population growth rate, based on this data.*
+* *There is a negative relationship between the median age and population growth rate of the selected countries.*
+* *There appears to be no strong correlation between population size (represented by the size of the dots) and either median age or population growth rate, based on this data.*
 
