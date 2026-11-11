@@ -96,6 +96,52 @@ Population_data |>
 * *There is a negative relationship between median age and population growth rate of the selected countries.*
 * *There appears to be no strong correlation between population size (represented by the size of the dots) and either median age or population growth rate, based on this data.*
 
+
+```{r Visualisation2, echo=TRUE, fig.cap="This chart shows the median age of Asuatralia's population, along with the annual population growth rate, from 1950 to 2023"}
+
+Population_data |>
+  filter(Country=="Australia")|>
+  ggplot(aes(x = Year))+
+  geom_line(
+    aes(y = Median_age, colour="red"), 
+    linewidth = 0.7
+    )+
+  geom_line(
+    aes(y = Population_growth_rate_percent*8, colour="blue"), 
+    linewidth = 0.7, 
+    linetype="dashed"
+    )+
+geom_text_repel(
+  data = Population_data |>
+    filter(Country == "Australia") |>
+    filter(Year == max(Year)),
+  aes(y = Population_growth_rate_percent, label = "Annual population growth (%)"),
+  direction = "y",
+  colour = "red",
+  point.padding = 1,
+  nudge_y = 1
+)+
+  geom_text_repel(
+  data = Population_data |>
+    filter(Country == "Australia") |>
+    filter(Year == max(Year)),
+  aes(y = Median_age, label = "Median age"),
+  direction = "y",
+  colour = "blue",
+  point.padding = 1,
+  nudge_y = 1
+)+
+  
+ theme_minimal()+
+  scale_y_continuous(
+    name = "Median age",
+    limits = c(0,50),
+    sec.axis = sec_axis(~ ./8,name = "Annual population growth (%)"))+
+    theme(legend.position = "none")
+```
+* *Since around 1970, Australia's median age has gradually increased. Meanwhile, Australia's annual population growth rate has declined from 1950 to 2023.*
+
+
 **Section 7 Conclusion**
 There is a strong negative relationship between the median age of a country, and its annual population growth. That is, on average, the higher the median age of a country, the lower its annual population growth is likely to be. 
 
